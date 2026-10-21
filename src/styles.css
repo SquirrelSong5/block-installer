@@ -1,0 +1,348 @@
+/* PCL 风格：蓝色顶栏、淡蓝渐变底、半透明白色卡片 */
+:root {
+  --blue: #1370f3;
+  --blue-d: #0b5bd0;
+  --blue-soft: #e2edfe;
+  --ink: #2b3445;
+  --sub: #8a93a3;
+  --faint: #a7afbd;
+  --card: rgba(255, 255, 255, 0.82);
+  --card-solid: #fbfdff;
+  --edge: rgba(120, 160, 225, 0.3);
+  --hover: rgba(19, 112, 243, 0.07);
+  --line: rgba(120, 150, 200, 0.18);
+  --ok: #22a157;
+  --ok-soft: #e2f4e8;
+  --warn: #b26a0c;
+  --warn-soft: rgba(240, 170, 60, 0.14);
+  --bad: #d64545;
+  --bad-soft: rgba(214, 69, 69, 0.1);
+  --off: #c6cdd8;
+  --grad-a: #d6e6fb;
+  --grad-b: #eef4fd;
+  --grad-c: #c9ddfa;
+  --font: "Microsoft YaHei UI", "Microsoft YaHei", "PingFang SC", "Noto Sans SC", system-ui, sans-serif;
+  --mono: "Cascadia Mono", Consolas, "SFMono-Regular", ui-monospace, monospace;
+  color-scheme: light;
+}
+
+* {
+  box-sizing: border-box;
+}
+html,
+body,
+#app {
+  height: 100%;
+  margin: 0;
+}
+body {
+  font-family: var(--font);
+  font-size: 13px;
+  color: var(--ink);
+  background: var(--grad-b);
+  overflow: hidden;
+  user-select: none;
+  -webkit-font-smoothing: antialiased;
+}
+input,
+select,
+textarea {
+  user-select: text;
+}
+button {
+  font: inherit;
+  color: inherit;
+  background: none;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+  text-align: left;
+}
+button:disabled {
+  cursor: default;
+}
+:focus-visible {
+  outline: 2px solid var(--blue);
+  outline-offset: 1px;
+}
+
+/* 卡片 */
+.card {
+  background: var(--card);
+  border: 1px solid var(--edge);
+  border-radius: 6px;
+  box-shadow: 0 2px 8px -3px rgba(40, 90, 170, 0.18);
+}
+.card-h {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  width: 100%;
+  padding: 12px 16px;
+  font-weight: 700;
+  font-size: 13.5px;
+}
+.card-h .cnt {
+  font-weight: 400;
+  color: var(--sub);
+  font-size: 12.5px;
+}
+.card-b {
+  padding: 0 6px 8px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* 列表项 */
+.li {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  padding: 5px 10px;
+  border-radius: 5px;
+  transition: background 0.12s;
+  min-height: 42px;
+}
+.li.clickable:hover,
+button.li:hover {
+  background: var(--hover);
+}
+.li .t {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  line-height: 1.45;
+  flex: 1;
+}
+.li .t b {
+  font-weight: 500;
+  font-size: 13.5px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.li .t span {
+  font-size: 12px;
+  color: var(--sub);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.li .r {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--sub);
+  font-size: 12px;
+  flex: none;
+}
+
+.badge {
+  font-size: 11px;
+  padding: 0 7px;
+  border-radius: 4px;
+  background: var(--blue-soft);
+  color: var(--blue);
+  line-height: 1.7;
+  white-space: nowrap;
+}
+.badge.g {
+  background: var(--ok-soft);
+  color: var(--ok);
+}
+.badge.w {
+  background: var(--warn-soft);
+  color: var(--warn);
+}
+.badge.gray {
+  background: rgba(120, 130, 150, 0.12);
+  color: var(--sub);
+}
+
+/* 按钮 */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 6px 14px;
+  border-radius: 5px;
+  border: 1px solid var(--edge);
+  background: var(--card-solid);
+  font-size: 12.5px;
+  color: #4d5768;
+  white-space: nowrap;
+  transition: border-color 0.12s, color 0.12s, background 0.12s;
+}
+.btn:hover:not(:disabled) {
+  border-color: var(--blue);
+  color: var(--blue);
+}
+.btn.primary {
+  background: var(--blue);
+  border-color: var(--blue);
+  color: #fff;
+  font-weight: 700;
+}
+.btn.primary:hover:not(:disabled) {
+  background: var(--blue-d);
+  color: #fff;
+}
+.btn.danger:hover:not(:disabled) {
+  border-color: var(--bad);
+  color: var(--bad);
+}
+.btn:disabled {
+  opacity: 0.5;
+}
+.link {
+  color: var(--blue);
+  font-size: 12.5px;
+}
+.link:hover {
+  text-decoration: underline;
+}
+.icon-btn {
+  width: 30px;
+  height: 30px;
+  border-radius: 5px;
+  display: inline-grid;
+  place-items: center;
+  text-align: center;
+  color: #5d6676;
+  font-size: 15px;
+}
+.icon-btn:hover {
+  background: var(--hover);
+  color: var(--blue);
+}
+
+/* 输入 */
+.input {
+  width: 100%;
+  border: 1px solid var(--edge);
+  border-radius: 5px;
+  padding: 6px 10px;
+  font: inherit;
+  color: var(--ink);
+  background: var(--card-solid);
+  outline: none;
+}
+.input:focus {
+  border-color: var(--blue);
+}
+.input.bad {
+  border-color: var(--bad);
+}
+select.input {
+  cursor: pointer;
+}
+
+/* 开关 */
+.switch {
+  width: 34px;
+  height: 18px;
+  border-radius: 999px;
+  background: var(--off);
+  position: relative;
+  flex: none;
+  transition: background 0.15s;
+}
+.switch::after {
+  content: "";
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #fff;
+  transition: left 0.15s;
+}
+.switch.on {
+  background: var(--blue);
+}
+.switch.on::after {
+  left: 18px;
+}
+
+/* 提示条 */
+.hint {
+  font-size: 12.5px;
+  border-radius: 6px;
+  padding: 9px 14px;
+  line-height: 1.6;
+}
+.hint.info {
+  background: rgba(19, 112, 243, 0.1);
+  border: 1px solid rgba(19, 112, 243, 0.25);
+  color: #2a4f8f;
+}
+.hint.warn {
+  background: var(--warn-soft);
+  border: 1px solid rgba(220, 150, 40, 0.35);
+  color: #8a5a12;
+}
+.hint.bad {
+  background: var(--bad-soft);
+  border: 1px solid rgba(214, 69, 69, 0.3);
+  color: #a33a3a;
+}
+
+.mono {
+  font-family: var(--mono);
+  font-size: 12px;
+}
+.muted {
+  color: var(--sub);
+}
+
+/* 页面滚动区 */
+.page {
+  position: absolute;
+  inset: 0;
+  overflow-y: auto;
+  padding: 16px 22px 90px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  scrollbar-width: thin;
+}
+.page::-webkit-scrollbar {
+  width: 8px;
+}
+.page::-webkit-scrollbar-thumb {
+  background: rgba(19, 112, 243, 0.25);
+  border-radius: 4px;
+}
+
+.spin {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  border: 2px solid var(--blue);
+  border-right-color: transparent;
+  animation: spin 0.9s linear infinite;
+  display: inline-block;
+  flex: none;
+}
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .spin {
+    animation: none;
+  }
+}
+
+.loading-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 16px;
+  color: var(--sub);
+}
